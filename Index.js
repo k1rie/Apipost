@@ -7,6 +7,10 @@ const App = express()
 App.use(express.json())
 App.use(cors())
 
+
+App.get("/pp",(req,res)=>{
+    res.send("holaaa")
+})
 App.get("/getposts",async (req,res)=>{
 
     await connect()
