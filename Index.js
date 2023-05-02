@@ -4,6 +4,8 @@ import {connect,getAllPosts,createPost,findpost} from "./mongoconfig/mongoconfig
 
 const App = express()
 
+const PORT = process.env.PORT || 3001
+
 App.use(express.json())
 App.use(cors())
 
@@ -33,6 +35,6 @@ App.post("/createpost",async(req,res)=>{
     res.send("enviado")
 })
 
-App.listen(3001,()=>{
+App.listen(PORT,()=>{
     console.log("ready")
 })
