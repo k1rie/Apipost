@@ -33,9 +33,18 @@ async function createPost(tittle,content){
     }
 }
 
+function getregex(data) {
+
+    var regEx = `${data}`; // first we make a String variable of our RegEx
+    regEx = new RegExp(regEx,"i"); // now we convert it to RegEx
+
+    return regEx; // In the end, we return the RegEx
+}
 async function findpost(tittle){
     try {
-        const data = await model.find({tittle:tittle})
+        const regex = getregex(tittle)
+        console.log(regex)
+        const data = await model.find({tittle:{ $regex: regex }})
         return data
     }catch (e) {
         console.log(e)
